@@ -41,8 +41,34 @@ public class Circus {
     }
 
     public static void main(String[] args) {
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+        System.out.println("Number of animals in the array are: " + animals.length);
+//        animals[3] = new Elephant("Eli"); // Does not work
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+
+        printAnimals(animalArrayList);
+
+        Elephant strongOne = new Elephant("strongOne");
+        animalArrayList.add(strongOne);
+        Duck andy = new Duck("Andy");
+        animalArrayList.add(andy);
+
+        printAnimals(animalArrayList);
+
+        System.out.println("Strong one is in position: " + (animalArrayList.indexOf(strongOne) + 1));
+
+        animalArrayList.sort(Animal.AnimalNameComparator);
+
+        printAnimals(animalArrayList);
+
+//        makeAnimalsTalk();
+//        System.out.println("Total value of animals " + calculateAssetValue(animals));
+//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+    }
+
+    private static void printAnimals(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
+        System.out.println("Size of animal array list: " + animalArrayList.size());
     }
 }
